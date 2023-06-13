@@ -39,6 +39,23 @@ Create a new file called MyComponent.vue and open it in Visual Studio Code.
 ## Step 3: Add the component code
 Copy and paste the component code mentioned earlier into the MyComponent.vue file.
 
+```vue
+<template>
+  <div class="my-component">
+    <h1>{{ message }}</h1>
+    <button @click="changeColor">Change Color</button>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+import "../my-component.scss";
+import { changeColor } from "../my-component";
+
+const message = ref("Hello, Vue 3!");
+</script>
+```
+
 ## Step 4: Install dependencies
 
 Open a terminal in Visual Studio Code by selecting "Terminal" from the top menu and clicking "New Terminal."
@@ -105,26 +122,7 @@ $secondary-color: darkblue;
 $accent-color: #0000ff;
 ```
 
-## Step 7: my-component.vue
-
-```
-<template>
-  <div class="my-component">
-    <h1>{{ message }}</h1>
-    <button @click="changeColor">Change Color</button>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from "vue";
-import "../my-component.scss";
-import { changeColor } from "../my-component";
-
-const message = ref("Hello, Vue 3!");
-</script>
-```
-
-## Step 8: Run the project
+## Step 7: Run the project
 
 In the terminal, run the following command to start the development server:
 
@@ -135,6 +133,37 @@ npm run serve
 Open your browser and visit the URL displayed in the terminal (usually http://localhost:8080).
 You should see the rendered component with the specified SCSS styles applied.
 That's it! You've successfully implemented the provided code using SCSS in a Vue 3 project in Visual Studio Code.
+
+## Step 8: App.vue
+
+```vue
+<template>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <myComponent msg="Welcome to Your Vue.js + TypeScript App" />
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import myComponent from "./components/myComponent.vue";
+
+export default defineComponent({
+  components: {
+    myComponent,
+  },
+});
+</script>
+
+<style scoped>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+```
 
 ## Project setup
 ```
